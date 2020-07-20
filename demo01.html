@@ -5,6 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-
+    <canvas id="myCanvas" style="border: 1px solid red" width='500' height='500'></canvas>
 </body>
+<script>
+  let webgl = null;
+  (function () {
+      const canvas = document.getElementById('myCanvas');
+      webgl = canvas.getContext('webgl');
+
+      webgl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight);
+
+      webgl.clearColor(106/255.0, 121.0/255, 162/255, 1.0);
+      webgl.clear(webgl.COLOR_BUFFER_BIT);
+  })()
+</script>
 </html>
