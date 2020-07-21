@@ -7,22 +7,21 @@
 <body onload="Init()">
     <canvas id="myCanvas" style="border: 1px solid red" width='500' height='500'></canvas>
 </body>
-<script id="shader-vs">
+<script id="shader-vs" type="x-shader/x-vertex">
     attribute   vec3    v3Position;
-    void main(void) {
+    void main() {
       gl_Position = vec4(v3Position, 1.0);
     }
 </script>
 
-<script id="shader-fs">
-    void main(void) {
-      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0)
+<script id="shader-fs"  type="x-shader/x-fragment">
+    void main() {
+      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
     }
 </script>
 <script>
     function getShaderSource(scriptID) {
       var shaderScript = document.getElementById(scriptID);
-      console.log(shaderScript)
       if(shaderScript == null) return "";
 
       var sourceCode = "";
@@ -31,7 +30,6 @@
         if (child.nodeType == child.TEXT_NODE) sourceCode += child.textContent;
         child = child.nextSibling;
       }
-      console.log(sourceCode)
       return sourceCode
     }
 
@@ -85,7 +83,7 @@
       webgl.bindBuffer(webgl.ARRAY_BUFFER, triangleBuffer);
       webgl.bufferData(webgl.ARRAY_BUFFER, new Float32Array(jsArrayData), webgl.STATIC_DRAW);
 
-      webgl.clearColor(0.0, 0.0, 0.0, 1.0);
+      webgl.clearColor(1.0, 0.0, 0.0, 1.0);
       webgl.clear(webgl.COLOR_BUFFER_BIT);
 
       webgl.bindBuffer(webgl.ARRAY_BUFFER, triangleBuffer);
